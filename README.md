@@ -4,6 +4,12 @@ Simulador de ataque de alta carga com mecanismo de defesa baseado em rate limiti
 
 ---
 
+## 📊 Preview do sistema
+
+![Gráfico](assets/grafico.png)
+
+---
+
 ## 🚀 Sobre o projeto
 
 Este projeto simula um cenário real de sobrecarga em APIs, onde múltiplas requisições são enviadas simultaneamente para testar a resistência do servidor.
