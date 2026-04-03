@@ -40,7 +40,7 @@ O sistema implementa um mecanismo de defesa que identifica e bloqueia excesso de
 
 ## 📊 Resultado
 
-![Gráfico](assets/grafico.png)
+![Gráfico](analytics/grafico.png)
 
 ---
 
