@@ -6,7 +6,7 @@ Simulador de ataque de alta carga com mecanismo de defesa baseado em rate limiti
 
 ## 📊 Preview
 
-![Gráfico](analytics/grafico.png)
+![Gráfico](assets/terminal.png)
 
 ---
 
