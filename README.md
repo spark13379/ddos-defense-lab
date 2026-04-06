@@ -4,7 +4,7 @@ Simulador de ataque de alta carga com mecanismo de defesa baseado em rate limiti
 
 ---
 
-## 📊 Preview do sistema
+## 📊 Preview
 
 ![Gráfico](analytics/grafico.png)
 
@@ -12,68 +12,60 @@ Simulador de ataque de alta carga com mecanismo de defesa baseado em rate limiti
 
 ## 🚀 Sobre o projeto
 
-Este projeto simula um cenário real de sobrecarga em APIs, onde múltiplas requisições são enviadas simultaneamente para testar a resistência do servidor.
+Este projeto simula um cenário real de sobrecarga em APIs, onde múltiplas requisições simultâneas são disparadas contra um servidor para testar sua resiliência.
 
-O sistema implementa um mecanismo de defesa que identifica e bloqueia excesso de requisições por IP.
-
----
-
-## 🧠 Como funciona
-
-1. Um servidor com FastAPI simula uma API real
-2. Um sistema de rate limiting controla o número de requisições
-3. Um script envia múltiplas requisições simultâneas
-4. O sistema bloqueia automaticamente tráfego excessivo
-5. Os resultados são analisados e exibidos em gráfico
+O sistema implementa um mecanismo de defesa baseado em **rate limiting por IP**, bloqueando automaticamente tráfego abusivo.
 
 ---
 
-## 🔐 Conceitos de segurança aplicados
+## 🧠 Arquitetura do sistema
+
+```
+Attacker Script  --->  API (FastAPI)  --->  Rate Limiter  --->  Response
+                         │
+                         └── Monitoramento (CPU, RAM, Requests)
+```
+
+### Componentes:
+
+* **API (FastAPI):** simula um serviço real
+* **Rate Limiter:** controla requisições por IP
+* **Attacker:** gera carga simultânea
+* **Monitor:** coleta métricas do sistema
+
+---
+
+## 🔐 Conceitos de segurança
 
 * Rate Limiting
 * Proteção contra DoS
 * Controle de tráfego por IP
-* Simulação de ataque de alta carga
+* Simulação de carga massiva
 * Monitoramento de recursos
 
 ---
 
-## 📊 Resultado
+## 💻 Execução
 
-![Gráfico](analytics/grafico.png)
-
----
-
-## 💻 Execução do ataque
-
-![Execução](assets/terminal.png)
-
----
-
-## ⚙️ Tecnologias utilizadas
-
-* Python
-* FastAPI
-* httpx
-* psutil
-* matplotlib
-
----
-
-## ▶️ Como rodar o projeto
+### 1. Instalar dependências
 
 ```bash
 pip install -r requirements.txt
+```
+
+### 2. Subir o servidor
+
+```bash
 python -m uvicorn server.app:app --reload
 ```
 
-Em outro terminal:
+### 3. Simular ataque
 
 ```bash
 python attacker/load_test.py
 ```
 
-Monitoramento:
+### 4. Monitoramento
 
 ```bash
 python monitor/metrics.py
@@ -81,13 +73,31 @@ python monitor/metrics.py
 
 ---
 
+## 📊 Resultado do teste
+
+O gráfico abaixo mostra o comportamento do sistema sob carga:
+
+* Aumento abrupto de requisições
+* Ativação do rate limiting
+* Estabilização do servidor
+
+![Gráfico](analytics/grafico.png)
+
+---
+
 ## 💼 Aplicação real
 
-Este projeto demonstra como sistemas podem se proteger contra sobrecarga de requisições, simulando cenários reais de ataques de negação de serviço (DoS).
+Este projeto demonstra na prática como sistemas modernos podem:
+
+* Prevenir ataques de negação de serviço (DoS)
+* Proteger APIs públicas
+* Garantir estabilidade sob alta carga
+* Implementar mecanismos de defesa escaláveis
 
 ---
 
 ## ⚠️ Aviso
 
-Este projeto é para fins educacionais.
-Executar apenas em ambiente controlado (localhost).
+Projeto para fins educacionais.
+
+⚠️ Execute apenas em ambiente controlado (localhost)
